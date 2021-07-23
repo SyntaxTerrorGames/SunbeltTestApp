@@ -1,0 +1,36 @@
+﻿@page
+@model SunbeltTestApp.Pages.DrinksModel
+@using SunbeltTestApp.EFMigrations 
+@{
+}
+
+<h4>Drinks</h4>
+<hr/>
+<table class="table table-striped">
+    <tr>
+        <th>Drink ID</th>
+        <th>Drink Name</th>
+    </tr>
+    @foreach(Drink drink in Model.Drinks)
+            {
+                <tr>
+                    <td>@drink.DrinkId</td>
+                    <td>@drink.Name</td>
+                </tr>
+            }
+</table>
+<hr/>
+<div>
+    <form method="post">
+        <fieldset>
+            <legend>Add Drink</legend>
+            <div class="form-group">
+                <label asp-for="Input.Name">Drink Name:</label>
+                <input asp-for="Input.Name"/>
+            </div>
+            <div>
+                <button type="submit" class="nav-link">Add</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

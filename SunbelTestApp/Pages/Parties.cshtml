@@ -1,0 +1,54 @@
+﻿@page
+@model SunbeltTestApp.Pages.PartiesModel
+@using SunbeltTestApp.EFMigrations
+@{
+}
+
+<h4>Parties</h4>
+<hr />
+<table class="table table-striped">
+    <tr>
+        <th>Party ID</th>
+        <th>Party Name</th>
+        <th>Date</th>
+    </tr>
+    @foreach (Party party in Model.Parties)
+    {
+        <tr>
+            <td>@party.PartyId</td>
+            <td>@party.PartyName</td>
+            <td>@party.PartyDate</td>
+        </tr>
+    }
+</table>
+<hr />
+<div>
+    <form method="post">
+        <fieldset>
+            <legend>Add Party</legend>
+            <div class="form-group">
+                <label asp-for="Input.PartyName">Party Name:</label>
+                <input asp-for="Input.PartyName" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PartyDate" id="txtSelectedDate">Date:</label>
+                <input asp-for="Input.PartyDate" />
+            </div>
+            <div>
+                <button type="submit" class="nav-link">Add</button>
+            </div>
+        </fieldset>
+        <script type="text/javascript">
+            $(function () {
+                $('#txtSelectedDate').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    format: "dd/mm/yyyy",
+                    language: "tr"
+                });
+            });
+        </script>
+    </form>
+</div>
+
+

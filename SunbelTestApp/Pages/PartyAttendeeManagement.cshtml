@@ -1,0 +1,64 @@
+﻿@page
+@model SunbeltTestApp.Pages.PartyAttendeeManagementModel
+@using SunbeltTestApp.EFMigrations
+@{
+}
+
+<h4>Party Attendee Management</h4>
+<hr />
+<table class="table table-striped">
+    <tr>
+        <th>Management ID</th>
+        <th>Party</th>
+        <th>Attendee</th>
+        <th>Favourite Drink</th>
+    </tr>
+    @foreach (PartyAttendee attendee in Model.PartyAttendees)
+    {
+        <tr>
+            <td>@attendee.PartyAttendeeId</td>
+            <td>@attendee.Party.PartyName</td>
+            <td>@attendee.Person.Name</td>
+            <td>@attendee.Drink.Name</td>
+        </tr>
+    }
+</table>
+<div>
+    <form method="post">
+        <fieldset>
+            <legend>Filter Results</legend>
+            <div class="form-group">
+                <label>By attendee:</label>
+                <select class="form-control" asp-items="Model.PersonList" asp-for="Input.PersonFilterId" 
+                        onchange="this.form.submit();"></select>
+            </div>
+            <div class="form-group">
+                <label>By party:</label>
+                <select class="form-control" asp-items="Model.PartyList" onchange="this.form.submit();"></select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Add Party</legend>
+            <div class="form-group">
+                <label asp-for="Input.PartyId">Party Name:</label>
+                <select asp-for="Input.PartyId" class="form-control"
+                        asp-items="Model.PartyList"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PersonId">Person Name:</label>
+                <select asp-for="Input.PersonId" class="form-control"
+                        asp-items="Model.PersonList"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.DrinkId">Favourite Drink:</label>
+                <select asp-for="Input.DrinkId" class="form-control"
+                        asp-items="Model.DrinkList"></select>
+            </div>
+            <div>
+                <button type="submit" class="nav-link" asp-page-handler="Submit">Add</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<hr/>
+

@@ -1,0 +1,36 @@
+﻿@page
+@model SunbeltTestApp.Pages.AttendeesModel
+@using SunbeltTestApp.EFMigrations
+@{
+}
+<h4>People</h4>
+<hr />
+<table class="table table-striped">
+    <tr>
+        <th>Person ID</th>
+        <th>Person Name</th>
+    </tr>
+    @foreach (Person person in Model.People)
+    {
+        <tr>
+            <td>@person.PersonId</td>
+            <td>@person.Name</td>
+        </tr>
+    }
+</table>
+<hr />
+<div>
+    <form method="post">
+        <fieldset>
+            <legend>Add Person</legend>
+            <div class="form-group">
+                <label asp-for="Input.Name">Name:</label>
+                <input asp-for="Input.Name" />
+            </div>
+            <div>
+                <button type="submit" class="nav-link">Add</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
