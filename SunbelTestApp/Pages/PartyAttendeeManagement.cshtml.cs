@@ -94,9 +94,14 @@ namespace SunbeltTestApp.Pages
             // Check person filter
             if (Input.PersonFilterId != 0)
                 PartyAttendees = await _partyAttendeeRepository.ReadAllPartiesByPerson(Input.PersonFilterId);
+            else if (Input.PartyFilterId != 0)
+                PartyAttendees = await _partyAttendeeRepository.ReadSingleParty(Input.PartyFilterId);
+            else
+                PartyAttendees = await _partyAttendeeRepository.ReadAllAsync();
 
-            if (Input.PartyFilterId != 0)
-                PartyAttendee
+            await PopulatePartyListAsync();
+            await PopulatePersonList();
+            await PopulateDrinkList();
 
             return Page();
         }
