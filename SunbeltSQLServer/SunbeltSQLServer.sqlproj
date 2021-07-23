@@ -13,7 +13,7 @@
     </RootPath>
     <RootNamespace>SunbeltSQLServer</RootNamespace>
     <AssemblyName>SunbeltSQLServer</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -22,6 +22,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -56,10 +58,27 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Objects" />
-    <Folder Include="Objects\Tables" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Server Objects\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Objects\Tables\TestTable.sql" />
+    <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
+    <Build Include="dbo\Tables\Drinks.sql" />
+    <Build Include="dbo\Tables\Parties.sql" />
+    <Build Include="dbo\Tables\People.sql" />
+    <Build Include="dbo\Tables\PartyAttendees.sql" />
+    <Build Include="Security\sa.sql" />
+    <Build Include="Security\DESKTOP-EUPBGSK_david.sql" />
+    <Build Include="Security\NT SERVICE_SQLWriter.sql" />
+    <Build Include="Security\NT SERVICE_Winmgmt.sql" />
+    <Build Include="Security\NT Service_MSSQLSERVER.sql" />
+    <Build Include="Security\NT AUTHORITY_SYSTEM.sql" />
+    <Build Include="Security\NT SERVICE_SQLSERVERAGENT.sql" />
+    <Build Include="Security\NT SERVICE_SQLTELEMETRY.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="Server Objects\AlwaysOn_health.sql" />
+    <Build Include="Server Objects\telemetry_xevents.sql" />
   </ItemGroup>
 </Project>
